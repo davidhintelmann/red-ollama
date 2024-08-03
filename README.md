@@ -3,7 +3,7 @@
 ## tl;dr
 
 ```powershell
-git clone https://github.com/davidhintelmann/red-ollama
+git clone "https://github.com/davidhintelmann/red-ollama.git"
 go build -o "llm.exe"
 .\llm.exe
 ```
