@@ -33,13 +33,13 @@ Additionally, using Redis to cache prompts along with their responses
 ## Before Using this Repo
 
 Prerequisites:
-1. [Download go](https://go.dev/dl/) and install on Windows 64 bit
+1. [Download go](https://go.dev/dl/)
 2. [Install Ollama](https://ollama.com/)
 3. [Install Redis on Windows](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/).
 
 ## Cache Responses
 
-A simple approach to using Redis is to cache prompts along with their response, and then if a user enters the same prompt twice then the cache result will be returned instantly.
+A simple approach to using Redis is to cache prompts along with their response, and then if a user enters the same prompt twice then the cached result will be returned instead.
 
 This was developed on Windows 11 and one can use WSL 2 to [install Redis on Windows](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/).
 
