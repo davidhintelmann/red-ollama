@@ -16,6 +16,7 @@ func main() {
 	defaultModel := "llama3.1"
 	pFlag := flag.String("p", defaultPrompt, "enter your prompt for LLM")
 	mFlag := flag.String("m", defaultModel, "enter your LLM model name served by Ollama")
+	cFlag := flag.Bool("c", true, "cache response by setting r equal to true, set to faluse to prompt ollama again")
 	flag.Parse()
 	if *pFlag == defaultPrompt {
 		fmt.Println("Use -p flag followed by your text prompt, ie -p \"tell me a dirty joke\"")
@@ -33,7 +34,7 @@ func main() {
 		log.Fatalf("error with redis connection: %v\n", err)
 	}
 
-	jsonResp, _, err := redlama.PromptOllama(ctx, *pFlag, *mFlag, true, redisClient)
+	jsonResp, _, err := redlama.PromptOllama(ctx, *pFlag, *mFlag, *cFlag, redisClient)
 	if err != nil {
 		log.Fatalf("error: %v\n", err)
 	}
