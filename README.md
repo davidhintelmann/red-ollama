@@ -1,5 +1,26 @@
 # Go Redis Ollama
 
+## tl;dr
+
+```powershell
+git clone https://github.com/davidhintelmann/red-ollama
+go build -o "llm.exe"
+.\llm.exe
+```
+use p flag to enter a prompt
+
+```powershell
+.\llm.exe -p "tell me a joke"
+```
+
+use m flag to enter which model you want to use
+
+```powershell
+.\llm.exe -p "tell me a joke" -m "phi3"
+```
+
+## Summary
+
 This repo is an example of how one can use the go programming language to send prompts to [Ollama](https://ollama.com/) server hosted locally.
 Using Ollama one can request prompts from LLM or SLM hosted locally.
 
