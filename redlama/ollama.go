@@ -159,7 +159,7 @@ Returns:
   - *redis.Client
   - error: error message if there is one
 */
-func RedisClient(db_num int) (*redis.Client, error) {
+func RedisClient(ctx context.Context, db_num int) (*redis.Client, error) {
 	url, port := "localhost", "6379"
 	addr := fmt.Sprintf("%s:%s", url, port)
 	redisClient := redis.NewClient(&redis.Options{
@@ -170,11 +170,15 @@ func RedisClient(db_num int) (*redis.Client, error) {
 	})
 
 	addrCheck := strings.Split(redisClient.Options().Addr, ":")
+	redisStatus := redisClient.Info(ctx).String()
 	if len(addrCheck) > 2 {
 		errorText := fmt.Sprintf("address to redis local host is incorrect\nexpected %s\ngot %s\n", addr, addrCheck)
 		return nil, errors.New(errorText)
 	} else if addrCheck[0] != url || addrCheck[1] != port {
 		errorText := fmt.Sprintf("address to redis local host is incorrect\nexpected url: %s\ngot url: %s\nexpected port: %s\ngot port: %s\n", url, addrCheck[0], port, addrCheck[1])
+		return nil, errors.New(errorText)
+	} else if strings.Contains(redisStatus, "No connection could be made because the target machine actively refused it") {
+		errorText := fmt.Sprintln("Redis needs to started on WSL 2")
 		return nil, errors.New(errorText)
 	}
 

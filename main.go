@@ -28,7 +28,7 @@ func main() {
 		log.Fatalf("error with ollama connection: %v\n", err)
 	}
 
-	redisClient, err := redlama.RedisClient(2)
+	redisClient, err := redlama.RedisClient(ctx, 2)
 	if err != nil {
 		log.Fatalf("error with redis connection: %v\n", err)
 	}
