@@ -11,7 +11,7 @@ Additionally, using Redis to cache prompts along with their responses
 
 ## Before Using this Repo
 
-Preresquites:
+Prerequisites:
 1. [Download go](https://go.dev/dl/) and install on Windows 64 bit
 2. [Install Ollama](https://ollama.com/)
 3. [Install Redis on Windows](https://redis.io/docs/latest/operate/oss_and_stack/install/install-redis/install-redis-on-windows/).
